@@ -4,6 +4,9 @@ public class Cuadrado {
     public Cuadrado(double lado) {      //Constructor
         this.lado = lado;
     }
+    public Cuadrado() {      //Constructor sin parametros
+        this.lado = lado;
+    }
     public void setLado(double lado) { //Setter
         this.lado = lado;
     }

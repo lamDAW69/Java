@@ -1,7 +1,3 @@
-import java.util.Scanner;
-
-
-
 public class Main {
     public static void main(String[] args) {
         /*Scanner sc = new Scanner(System.in);
@@ -12,10 +8,39 @@ public class Main {
         //Crear un objeto cuadrado con un lado de 5.6
 
         Cuadrado square = new Cuadrado(5.6);
-        System.out.println("El lado del cuadrado es: " + square.getLado());
+        Cuadrado square2 = new Cuadrado();
+        square2.setLado(10.5);
+        System.out.println("El lado del cuadrado es: " + square.getLado() + " Y el cuadrado 2 es: " + square2.getLado());
+
+        //Create an object product with a name and a price
+        Product product = new Product("Laptop", 650);
+        double canaryIslandTax = 1.08;
+        double ceutaMelillaTax = 1.10;
+        double peninsularTax = 1.21;
+
+        System.out.println("The price of the product in the Canary Islands is: " + product.getPriceTaxed(canaryIslandTax));
+        System.out.println("The price of the product in Ceuta and Melilla is: " + String.format("%.2f", product.getPriceTaxed(ceutaMelillaTax) ));
+        System.out.println("The price of the product in the Peninsula is: " + product.getPriceTaxed(peninsularTax));
+
+        //Create a persona
+
+        Persona personita = new Persona("Luis", 25);
+        System.out.println("The name of the person is: " + personita.getName() + " and the age is: " + personita.getAge());
+        personita.setAge(-5);
+        System.out.println("The name of the person is: " + personita.getName() + " and the age is: " + personita.getAge());
+        personita.salute();
+
+        Persona[] personas = {
+            new Persona("Luis", 25),
+            new Persona("Juan", 30),
+            new Persona("Maria", 20),
+            new Persona("Ana", 40),
+            new Persona("Pedro", 35)
+        };
+
+        for(Persona x : personas) {         //For each
+            x.salute();
+        }
 
     }
 }
-
-//There's still no relevant content to start pushing changes to this repo
-//Still not relevant content at least for now, we were taking action over dates and how to parse them.
