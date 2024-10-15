@@ -42,5 +42,11 @@ public class Main {
             x.salute();
         }
 
+        Persona[] personas2 = Persona.copyArray(personas); //Copy the array of personas
+
+        for( Persona x : personas2) {
+            x.salute();
+        }
+
     }
 }

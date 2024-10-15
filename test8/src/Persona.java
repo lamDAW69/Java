@@ -37,4 +37,13 @@ public class Persona {
     public void salute() {
         System.out.println("Name: " + name + ", Age: " + age);
     }
+
+    public static Persona[] copyArray(Persona[] array) {
+        //Method to copy an array of personas
+        Persona[] newArray = new Persona[array.length];
+        for(int i = 0; i < array.length; i++) {
+            newArray[i] = new Persona(array[i]);
+        }
+        return newArray;
+    }
 }
