@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Main {
     public static void main(String[] args) {
         /*Scanner sc = new Scanner(System.in);
@@ -47,6 +52,40 @@ public class Main {
         for( Persona x : personas2) {
             x.salute();
         }
+
+        //Create a record
+        PersonaRecord littlerPersona = new PersonaRecord("Luis", 25);
+        System.out.println(littlerPersona);
+
+        //Herencia
+        TiendaLicores store = new TiendaLicores();
+        store.bienvenida();
+
+        //Collections
+        List<Product> listadoProductos = new ArrayList<>();
+
+        listadoProductos.add(new Product("Laptop", 650));
+        listadoProductos.add(new Product("Mouse", 20));
+        listadoProductos.add(new Product("Keyboard", 50));
+        listadoProductos.add(new Product("Monitor", 200));
+        listadoProductos.add(new Product("Headphones", 100));
+
+        for(Product x : listadoProductos) {
+            System.out.println(x.getName() + " " + x.getPrice());
+        }
+        //HashMap
+
+        Map<String, String> translations = new HashMap<>();
+                        //KEY, VALUE
+        translations.put("Hello", "Hola");
+        translations.put("Goodbye", "Adios");
+        translations.put("Thank you", "Gracias");
+        translations.put("Please", "Por favor");
+
+        String word = translations.get("Hello");
+        System.out.println(word);
+        System.out.println(translations);
+
 
     }
 }
