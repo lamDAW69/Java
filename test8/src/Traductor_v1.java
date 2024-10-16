@@ -38,7 +38,7 @@ public class Traductor_v1 {
 
             switch(opcion) {
                 case 1:
-                    traducir();
+                    cargarCorpus();
                     break;
                 case 0:
                     System.exit(0);
