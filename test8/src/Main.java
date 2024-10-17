@@ -89,11 +89,21 @@ public class Main {
 
         //Polimorfismo
         List<Figura> figuritas = new ArrayList<>();
-        figuritas.add(new Square(5.6));
-        figuritas.add(new Circle(3.5));
+      figuritas.add(new Square(5.6));
+      figuritas.add(new Circle(3.5));
+      figuritas.add(new Square(7.2));
+      figuritas.add(new Circle(4.1));
+      figuritas.add(new Square(8.3));
+
 
         for(Figura x : figuritas) {
-            System.out.println("Area: " + String.format("%.2f", x.calculateArea()));
+            if (x instanceof Square) {  //instanceof is used to check if an object is an instance of a class or an interface in particular to know if it comes from Circle o Square when both of them are Figura
+                System.out.println("Square");
+                System.out.println("Area: " + String.format("%.2f", x.calculateArea()) +  " and Perimeter: " + String.format("%.2f", x.calculatePerimeter()));
+            } else if (x instanceof Circle) {
+                System.out.println("Circle");
+                System.out.println("Area: " + String.format("%.2f", x.calculateArea()) +  " and Perimeter: " + String.format("%.2f", x.calculatePerimeter()));
+            }
         }
     }
 
