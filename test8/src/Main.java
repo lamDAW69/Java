@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 public class Main {
     public static void main(String[] args) {
         /*Scanner sc = new Scanner(System.in);
@@ -86,6 +87,14 @@ public class Main {
         System.out.println(word);
         System.out.println(translations);
 
+        //Polimorfismo
+        List<Figura> figuritas = new ArrayList<>();
+        figuritas.add(new Square(5.6));
+        figuritas.add(new Circle(3.5));
 
+        for(Figura x : figuritas) {
+            System.out.println("Area: " + String.format("%.2f", x.calculateArea()));
+        }
     }
+
 }
