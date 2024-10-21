@@ -105,6 +105,8 @@ public class Main {
                 System.out.println("Area: " + String.format("%.2f", x.calculateArea()) +  " and Perimeter: " + String.format("%.2f", x.calculatePerimeter()));
             }
         }
+
+        //Lambda expressions
     }
 
 }
