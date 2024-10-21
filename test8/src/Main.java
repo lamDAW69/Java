@@ -58,7 +58,7 @@ public class Main {
         PersonaRecord littlerPersona = new PersonaRecord("Luis", 25);
         System.out.println(littlerPersona);
 
-        //Herencia
+        //Herencia-
         TiendaLicores store = new TiendaLicores();
         store.bienvenida();
 
