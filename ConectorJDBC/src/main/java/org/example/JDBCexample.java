@@ -2,7 +2,9 @@ package org.example;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class JDBCexample {
     // Change these values according to your database configuration
@@ -13,9 +15,37 @@ public class JDBCexample {
     public static void main(String[] args) {
         // Establish the database connection
         try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
-            if (conn != null) {
-                System.out.println("connection successful");
+            System.out.println("Connected to ddbb");
+            // Create a statement object
+
+            Statement stmt = conn.createStatement();
+
+            // Check sql to select all students
+
+            String sql = "SELECT nia, nombre, edad FROM alumno";
+
+            //Execute the query
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // Extract data from result set
+
+            while(rs.next()) {
+                // Retrieve by column name
+                int nia = rs.getInt("nia");
+                String nombre = rs.getString("nombre");
+                int edad = rs.getInt("edad");
+
+                // Display values
+                System.out.println("NIA: " + nia + ", Nombre: " + nombre + ", Edad: " + edad);
+
             }
+
+            // Close the result set, statement and connection
+
+            rs.close();
+            stmt.close();
+
         } catch (SQLException e) {
             System.err.println("Error connecting to ddbb: " + e.getMessage());
         }
