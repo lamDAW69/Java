@@ -1,10 +1,6 @@
 package org.example;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class JDBCexample {
     // Change these values according to your database configuration
@@ -12,7 +8,7 @@ public class JDBCexample {
     static final String USER = "root";  // Database user
     static final String PASS = "";      // Database password
 
-    public static void main(String[] args) {
+    public static void ejercic(String[] args) {
         // Establish the database connection
         try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
             System.out.println("Connected to ddbb");
@@ -51,3 +47,4 @@ public class JDBCexample {
         }
     }
 }
+
