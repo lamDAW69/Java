@@ -26,6 +26,6 @@ public class Category {
     }
     @Override
     public String toString() {
-        return String.format("%5d %-40s", id, nombre);
+        return String.format("%5d %-40s", id, name);
     }
 }
