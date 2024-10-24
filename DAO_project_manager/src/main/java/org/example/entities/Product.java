@@ -1,13 +1,13 @@
 package org.example.entities;
 
-public class Products {
+public class Product {
     int id;
     String reference;
     String name;
     double price;
     int categoria;
 
-    public Products(int id, String reference, String name, double price, int categoria) {
+    public Product(int id, String reference, String name, double price, int categoria) {
         this.id = id;
         this.reference = reference;
         this.name = name;
@@ -21,6 +21,14 @@ public class Products {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getReference() {
