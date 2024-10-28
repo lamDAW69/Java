@@ -32,7 +32,7 @@ public class ProductDAOHibernate implements ProductDAO {
     public int insertProduct(Product product, int idCategory) {
         EntityManager em = EntityManagerBuilder.getEntityManagerFactory().createEntityManager();
 
-        Category category = em.find(Category.class, idCategory);
+        Category category = em.find(Category.class, idCategory); // We find the category by its id
 
         product.setCategoria(category); // We set the category to the product
 

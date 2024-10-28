@@ -21,193 +21,197 @@ public class App {
     private static CategoryDAO categoryDAO = new CategoryDAOHibernate();
     private static ProductDAO productDAO = new ProductDAOHibernate();
 
-    public static void listarCategorias() {
+    public static void listCategories() {
         categoryDAO.getCategories().forEach(category -> System.out.println(category));
     }
 
-    public static void listarProductos() {
+    public static void listProducts() {
         productDAO.getProducts().forEach(product -> System.out.println(product));
     }
 
-    public static void listarProductosCategoria() {
-        listarCategorias();
-        System.out.print("Elige una categoría: ");
+    public static void listProductsByCategory() {
+        listCategories();
+        System.out.print("Choose a category: ");
         int idCat = sc.nextInt();
         sc.nextLine();
         productDAO.getProdutosCategoria(idCat).forEach(product -> System.out.println(product));
     }
-    public static void crearCategoria() {
-        System.out.print("Introduce el nombre: ");
-        String nombre = sc.nextLine();
 
-        Category nuevaCategoria = new Category(0, nombre);
-        categoryDAO.insertCategory(nuevaCategoria);
+    public static void createCategory() {
+        System.out.print("Enter the name: ");
+        String name = sc.nextLine();
+
+        Category newCategory = new Category(0, name);
+        categoryDAO.insertCategory(newCategory);
     }
-    public static void crearProducto() {
-        System.out.print("Introduce la referencia: ");
-        String referencia = sc.nextLine();
 
-        System.out.print("Introduce el nombre: ");
-        String nombre = sc.nextLine();
+    public static void createProduct() {
+        System.out.print("Enter the reference: ");
+        String reference = sc.nextLine();
 
-        System.out.print("Introduce el precio: ");
-        double precio = sc.nextDouble();
+        System.out.print("Enter the name: ");
+        String name = sc.nextLine();
 
-        listarCategorias();
-        System.out.print("Introduce la categoría: ");
-        int categoria = sc.nextInt();
+        System.out.print("Enter the price: ");
+        double price = sc.nextDouble();
+
+        listCategories();
+        System.out.print("Enter the category: ");
+        int category = sc.nextInt();
         sc.nextLine();
 
-        Product nuevoProducto = new Product(0, referencia, nombre, precio, null);
-        productDAO.insertProduct(nuevoProducto, categoria);
+        Product newProduct = new Product(0, reference, name, price, null);
+        productDAO.insertProduct(newProduct, category);
     }
-    public static void borrarCategoria() {
-        listarCategorias();
 
-        System.out.print("Introduce el id de la categoría que quieres borrar: ");
+    public static void deleteCategory() {
+        listCategories();
+
+        System.out.print("Enter the id of the category you want to delete: ");
         int id = sc.nextInt();
         sc.nextLine();
 
         categoryDAO.deleteCategory(id);
     }
 
-    public static void borrarProducto() {
-        listarProductos();
+    public static void deleteProduct() {
+        listProducts();
 
-        System.out.print("Introduce el id del producto que quieres borrar: ");
+        System.out.print("Enter the id of the product you want to delete: ");
         int id = sc.nextInt();
         sc.nextLine();
 
         productDAO.deleteProduct(id);
     }
-    public static void actualizarCategoria() {
-        listarCategorias();
 
-        System.out.print("Introduce el identificador de la categoría que quieres actualizar: ");
+    public static void updateCategory() {
+        listCategories();
+
+        System.out.print("Enter the id of the category you want to update: ");
         int id = sc.nextInt();
         sc.nextLine();
 
-        System.out.print("Introduce el nuevo nombre: ");
-        String nombre = sc.nextLine().trim();
+        System.out.print("Enter the new name: ");
+        String name = sc.nextLine().trim();
 
-        Category categoria = new Category(id, nombre);
-        categoryDAO.updateCategory(categoria);
+        Category category = new Category(id, name);
+        categoryDAO.updateCategory(category);
     }
 
-    public static void actualizarProducto() {
-        listarProductos();
+    public static void updateProduct() {
+        listProducts();
 
-        System.out.print("Introduce el identificador del producto que quieres actualizar: ");
+        System.out.print("Enter the id of the product you want to update: ");
         int id = sc.nextInt();
         sc.nextLine();
 
-        System.out.print("Introduce la referencia: ");
-        String referencia = sc.nextLine();
+        System.out.print("Enter the reference: ");
+        String reference = sc.nextLine();
 
-        System.out.print("Introduce el nombre: ");
-        String nombre = sc.nextLine();
+        System.out.print("Enter the name: ");
+        String name = sc.nextLine();
 
-        System.out.print("Introduce el precio: ");
-        double precio = sc.nextDouble();
+        System.out.print("Enter the price: ");
+        double price = sc.nextDouble();
 
-        System.out.print("Introduce la categoría: ");
-        int categoria = sc.nextInt();
+        System.out.print("Enter the category: ");
+        int category = sc.nextInt();
         sc.nextLine();
 
-        Product producto = new Product(id, referencia, nombre, precio, null);
-        productDAO.updateProduct(producto, categoria);
+        Product product = new Product(id, reference, name, price, null);
+        productDAO.updateProduct(product, category);
     }
 
-    public static void menuProductos() {
-        String opcion = "";
+    public static void productMenu() {
+        String option = "";
 
-        System.out.println("c: Crear Producto");
-        System.out.println("r: Listar Productos");
-        System.out.println("r2: Listar Productos por categoría");
-        System.out.println("u: Actualizar Producto");
-        System.out.println("d: Borrar Producto");
-        System.out.print("Introduzca opción: ");
+        System.out.println("c: Create Product");
+        System.out.println("r: List Products");
+        System.out.println("r2: List Products by Category");
+        System.out.println("u: Update Product");
+        System.out.println("d: Delete Product");
+        System.out.print("Enter option: ");
 
-        opcion = sc.nextLine();
+        option = sc.nextLine();
 
-        switch (opcion.toLowerCase()) {
+        switch (option.toLowerCase()) {
             case "c":
-                crearProducto();
+                createProduct();
                 break;
             case "r":
-                listarProductos();
+                listProducts();
                 break;
             case "r2":
-                listarProductosCategoria();
+                listProductsByCategory();
                 break;
             case "u":
-                actualizarProducto();
+                updateProduct();
                 break;
             case "d":
-                borrarProducto();
+                deleteProduct();
                 break;
             default:
-                System.err.println("Opción no válida");
+                System.err.println("Invalid option");
         }
     }
 
-    public static void menuCategorias() {
-        String opcion = "";
+    public static void categoryMenu() {
+        String option = "";
 
-        System.out.println("c: Crear Categoría");
-        System.out.println("r: Listar Categoría");
-        System.out.println("u: Actualizar Categoría");
-        System.out.println("d: Borrar Categoría");
-        System.out.print("Introduzca opción: ");
+        System.out.println("c: Create Category");
+        System.out.println("r: List Categories");
+        System.out.println("u: Update Category");
+        System.out.println("d: Delete Category");
+        System.out.print("Enter option: ");
 
-        opcion = sc.nextLine();
+        option = sc.nextLine();
 
-        switch (opcion.toLowerCase()) {
+        switch (option.toLowerCase()) {
             case "c":
-                crearCategoria();
+                createCategory();
                 break;
             case "r":
-                listarCategorias();
+                listCategories();
                 break;
             case "u":
-                actualizarCategoria();
+                updateCategory();
                 break;
             case "d":
-                borrarCategoria();
+                deleteCategory();
                 break;
             default:
-                System.err.println("Opción no válida");
+                System.err.println("Invalid option");
         }
     }
 
     public static void main(String[] args) {
         Logger.getLogger("org.hibernate").setLevel(Level.OFF);
 
-        String opcion = "";
+        String option = "";
 
         do {
             System.out.println();
-            System.out.println("CRUD BÁSICO PRODUCT MANAGER");
-            System.out.println("p: Productos");
-            System.out.println("c: Categorías");
-            System.out.println("s: Salir");
-            System.out.print("Introduzca opción: ");
+            System.out.println("BASIC CRUD PRODUCT MANAGER");
+            System.out.println("p: Products");
+            System.out.println("c: Categories");
+            System.out.println("s: Exit");
+            System.out.print("Enter option: ");
 
-            opcion = sc.nextLine();
+            option = sc.nextLine();
 
-            switch (opcion.toLowerCase()) {
+            switch (option.toLowerCase()) {
                 case "p":
-                    menuProductos();
+                    productMenu();
                     break;
                 case "c":
-                    menuCategorias();
+                    categoryMenu();
                     break;
                 case "s":
                     break;
                 default:
-                    System.err.println("Opción no válida");
+                    System.err.println("Invalid option");
             }
 
-        } while(!opcion.toLowerCase().equals("s"));
+        } while(!option.toLowerCase().equals("s"));
     }
 }
