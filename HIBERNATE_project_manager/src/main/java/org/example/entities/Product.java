@@ -16,6 +16,7 @@ import lombok.Data;
 
 @Entity
 @NamedQueries({
+        @NamedQuery(name="Product.findAll", query="select p from Product p"),
         @NamedQuery(name="Product.findByCategory", query="select p from Product p where p.categoria.id = :idCategoria")
 })
 @Data @AllArgsConstructor

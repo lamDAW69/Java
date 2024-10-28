@@ -21,6 +21,14 @@ public class ProductDAOHibernate implements ProductDAO {
     }
 
     @Override
+    public List<Product> getProducts() {
+        EntityManager em = EntityManagerBuilder.getEntityManagerFactory().createEntityManager();
+        List<Product> list = em.createNamedQuery("Product.findAll", Product.class).getResultList();
+        em.close();
+        return list;
+    }
+
+    @Override
     public int insertProduct(Product product, int idCategory) {
         EntityManager em = EntityManagerBuilder.getEntityManagerFactory().createEntityManager();
 

@@ -17,6 +17,7 @@ public class EntityManagerBuilder {
     public static void closeEntityManagerFactory() {
         if (emf != null) {
             emf.close();
+            emf = null;
         }
     }
 
