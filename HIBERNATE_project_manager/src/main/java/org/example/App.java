@@ -12,6 +12,11 @@ import org.example.dao.ProductDAO;
 import org.example.dao.ProductDAOHibernate;
 import org.example.entities.Product;
 
+import org.example.entities.User;
+import org.example.dao.UserDAO;
+import org.example.dao.UserDAOHibernate;
+
+
 /**
  * Hello world!
  *
@@ -20,6 +25,7 @@ public class App {
     private static Scanner sc = new Scanner(System.in);
     private static CategoryDAO categoryDAO = new CategoryDAOHibernate();
     private static ProductDAO productDAO = new ProductDAOHibernate();
+    private static UserDAO userDAO = new UserDAOHibernate();
 
     public static void listCategories() {
         categoryDAO.getCategories().forEach(category -> System.out.println(category));
@@ -155,6 +161,70 @@ public class App {
         }
     }
 
+    public static void listUsers() {
+        userDAO.getUsers().forEach(user -> System.out.println(user));
+    }
+
+    public static void createUser() {
+        System.out.print("Enter the name: ");
+        String name = sc.nextLine();
+
+        User newUser = new User(0, name);
+        userDAO.insertUser(newUser);
+    }
+
+    public static void deleteUser() {
+        listUsers();
+
+        System.out.print("Enter the id of the user you want to delete: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+
+        userDAO.deleteUser(id);
+    }
+
+    public static void updateUser() {
+        listUsers();
+
+        System.out.print("Enter the id of the user you want to update: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Enter the new name: ");
+        String name = sc.nextLine().trim();
+
+        User user = new User(id, name);
+        userDAO.updateUser(user);
+    }
+
+    public static void manuUsers() {
+        String option = "";
+        System.out.println("c: Create User");
+        System.out.println("r: List Users");
+        System.out.println("u: Update User");
+        System.out.println("d: Delete User");
+        System.out.print("Enter option: ");
+
+        option = sc.nextLine();
+
+        switch (option.toLowerCase()) {
+            case "c":
+                createUser();
+                break;
+            case "r":
+                listUsers();
+                break;
+            case "u":
+                updateUser();
+                break;
+            case "d":
+                deleteUser();
+                break;
+            default:
+                System.err.println("Invalid option");
+        }
+    }
+
     public static void categoryMenu() {
         String option = "";
 
@@ -207,6 +277,9 @@ public class App {
                     categoryMenu();
                     break;
                 case "s":
+                    break;
+                case "u":
+                    manuUsers();
                     break;
                 default:
                     System.err.println("Invalid option");
