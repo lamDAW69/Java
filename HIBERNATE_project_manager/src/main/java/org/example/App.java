@@ -288,3 +288,4 @@ public class App {
         } while(!option.toLowerCase().equals("s"));
     }
 }
+//Remember to change the connection to the db in the file persistence.xml because you have to use "Curso java"
