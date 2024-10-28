@@ -34,7 +34,7 @@ public class Product {
     double precio;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "category")
+    @JoinColumn(name = "category")      // this is the name of the column in the product table that references the category table
     Category categoria;
 
     public Product() {
