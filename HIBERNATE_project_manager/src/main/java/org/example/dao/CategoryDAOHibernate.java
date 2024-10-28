@@ -25,7 +25,7 @@ public class CategoryDAOHibernate implements CategoryDAO {
         em.persist(categoria);          // We insert the category into the database
         em.getTransaction().commit();   // We commit the transaction
         em.close();                     // We close the EntityManager object
-        return categoria.getId();       // We return the id of the category
+        return categoria.getId();       // We return the id of the category s
     }
 
     @Override
