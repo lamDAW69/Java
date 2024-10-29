@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 
 @Entity
 @NamedQueries({
-        @NamedQuey(name = "User.findAll", query = "SELECT U FROM User U"),
+        @NamedQuery(name = "User.findAll", query = "SELECT U FROM User U"),
 })
 @Data
 @NoArgsConstructor
@@ -45,14 +45,14 @@ public class User {
             joinColumns = @JoinColumn(name = "idUsuario"),
             inverseJoinColumns = @JoinColumn(name = "idProducto")
     )
-    private Set<Producto> favoritos;
+    private Set<Product> favoritos;
 
     public User(int id, @NonNull String name) {
         this.id = id;
         this.name = name;
     }
     public String toString() {
-        return String.format("%5d %-40s", id, nombre);
+        return String.format("%5d %-40s", id, name);
     }
 
 }
