@@ -1,4 +1,4 @@
-package products;
+package com.eoi.product_manager.products;
 
 import org.springframework.data.repository.CrudRepository;
 

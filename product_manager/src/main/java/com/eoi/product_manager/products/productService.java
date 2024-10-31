@@ -1,4 +1,4 @@
-package products;
+package com.eoi.product_manager.products;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class productService  {
 
-    private productRepository pr;
+    private final productRepository pr; //final es para que lo pille y se pueda inicializar (buena práctica)
 
     public List<product> getProducts() {
         return (List<product>) pr.findAll();

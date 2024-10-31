@@ -1,4 +1,4 @@
-package categories;
+package com.eoi.product_manager.categories;
 
 import org.springframework.data.repository.CrudRepository;
 
