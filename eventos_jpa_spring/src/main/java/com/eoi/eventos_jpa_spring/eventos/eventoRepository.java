@@ -8,7 +8,7 @@ import java.util.List;
 
 
 @Repository
-public interface eventoRepository extends JpaRepository {
+public interface eventoRepository extends JpaRepository<evento, Integer> {
     List<eventoSinUsuarios> findBy();
     //EventoConUsuarios findEventoById(int);
 }
