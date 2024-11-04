@@ -14,4 +14,5 @@ public class eventoService {
     public List<eventoSinUsuarios> getAll() {
         return ev.findBy();
     }
+
 }

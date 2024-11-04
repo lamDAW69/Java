@@ -15,4 +15,9 @@ public class usuariosService {
     List<usuariosSinEventos> getAll() {
         return ur.findBy();
     }
+
+    public usuario insert(usuario u) {
+        u.setId(0);
+        return ur.save(u);
+    }
 }

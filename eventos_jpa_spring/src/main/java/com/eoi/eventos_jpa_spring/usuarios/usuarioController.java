@@ -2,10 +2,7 @@ package com.eoi.eventos_jpa_spring.usuarios;
 
 import com.eoi.eventos_jpa_spring.usuarios.proyecciones.usuariosSinEventos;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +16,10 @@ public class usuarioController {
     @GetMapping
     public List<usuariosSinEventos> getAll() {
         return us.getAll();
+    }
+
+    @PostMapping
+    public usuario insert(@RequestBody usuario u) {
+        return us.insert(u);
     }
 }

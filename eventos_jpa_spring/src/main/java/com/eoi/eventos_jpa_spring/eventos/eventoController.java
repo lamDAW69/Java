@@ -21,5 +21,4 @@ public class eventoController {
     public List<eventoSinUsuarios> getAll() {
         return es.getAll();
     }
-
 }
