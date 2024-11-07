@@ -15,4 +15,10 @@ public class eventoService {
         return ev.findBy();
     }
 
+    public evento insert(evento e) {
+        e.setId(0);
+        return ev.save(e);
+    }
+
+
 }
